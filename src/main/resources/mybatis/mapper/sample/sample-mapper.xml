@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="player">
+
+    <select id="dbConnection" resultType="int">
+        select 2 from dual
+    </select>
+    
+    <insert id="savePlayer">
+		INSERT INTO MyDB.dbo.player (
+			id,
+			lastName,
+			firstName,
+			position,
+			birthYear,
+			debutYear
+		) VALUES (
+			#{id_site},
+			#{id_gw},
+			#{id_odu},
+			#{id_idu},
+			#{type},
+			#{mode}
+		)
+	</insert>
+
+</mapper>

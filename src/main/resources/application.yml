@@ -1,0 +1,118 @@
+# default
+spring:
+  profiles:
+    active: "local"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "local"
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:sqlserver://112.218.114.148:1433;databaseName=tms
+    username: koiware
+    password: koiware123!
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: LogHikariCP
+      max-lifetime: 200000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+sftp:
+  host: "121.166.140.188"
+  port: 34722
+  user: "root"
+  password: "koiware123"
+  directory: "/home/test/awhp_doc/tms3-awhp-single-cycle_20211217-20211223/"
+download:
+  directory: "C:/awhp_cycle_files/"     
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:sqlserver://112.218.114.148:1433;databaseName=tms
+    username: koiware
+    password: koiware123!
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: LogHikariCP
+      max-lifetime: 200000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      
+sftp:
+  host: "121.166.140.188"
+  port: 34722
+  user: "root"
+  password: "koiware123"
+  directory: "/home/test/awhp_doc/tms3-awhp-single-cycle_20211217-20211223/"
+download:
+  directory: "C:/awhp_cycle_files/"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:sqlserver://127.0.0.1:1433;databaseName=MyDB
+    username: myuser
+    password: koiware`123
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: LogHikariCP
+      max-lifetime: 200000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+      
+
+sftp:
+  host: "121.166.140.188"
+  port: 34722
+  user: "root"
+  password: "koiware123"
+  directory: "/home/test/awhp_doc/tms3-awhp-single-cycle_20211217-20211223/"
+download:
+  directory: "C:/awhp_cycle_files/"
+    
+---
+
+spring:
+  config:
+    activate:
+      on-profile: "common"
+  
+mybatis:
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+  configuration:
+    multiple-result-sets-enabled: false
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    jdbc-type-for-null: varchar
+    default-fetch-size: 500
+    
+---
+
+spring:
+  profiles:
+    group:
+      "local": "local,common"
+      "dev":  "dev,common"
+      "prod": "prod,common"

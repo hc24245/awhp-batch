@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="singleCycle">
+
+	<resultMap id="singleCycleAvgMap" type="com.lg.awhp.model.SingleCycleAvg">
+		<result column="id_site" property="id_site"/> 
+		<result column="id_gw" property="id_gw"/> 
+		<result column="id_odu" property="id_odu"/>
+		<result column="id_idu" property="id_idu"/>
+		<result column="last_date" property="last_date"/>
+		<result column="oper" property="oper"/>
+		<result column="total_settemp" property="total_settemp"/>
+		<result column="count_settemp" property="count_settemp"/>
+		<result column="avg_settemp" property="avg_settemp"/>
+		<result column="total_roomtemp" property="total_roomtemp"/>
+		<result column="count_roomtemp" property="count_roomtemp"/>
+		<result column="avg_roomtemp" property="avg_roomtemp"/>
+		<result column="total_pipein_temp" property="total_pipein_temp"/>
+		<result column="count_pipein_temp" property="count_pipein_temp"/>
+		<result column="avg_pipein_temp" property="avg_pipein_temp"/>
+		<result column="total_pipeout_temp" property="total_pipeout_temp"/>
+		<result column="count_pipeout_temp" property="count_pipeout_temp"/>
+		<result column="avg_pipeout_temp" property="avg_pipeout_temp"/>
+		<result column="total_capa" property="total_capa"/>
+		<result column="count_capa" property="count_capa"/>
+		<result column="avg_capa" property="avg_capa"/>
+		<result column="total_fan" property="total_fan"/>
+		<result column="count_fan" property="count_fan"/>
+		<result column="avg_fan" property="avg_fan"/>
+		<result column="total_lev" property="total_lev"/>
+		<result column="count_lev" property="count_lev"/>
+		<result column="avg_lev" property="avg_lev"/>
+		
+	</resultMap>
+
+    <insert id="saveSingleCycleOriginInfo">
+		INSERT INTO Awhp_Single_Cycle_Origin_Info (
+			id_site
+			,id_gw
+			,id_odu
+			,id_idu
+			,gw_time
+			,server_time
+			,type
+			,mode
+			,oper
+			,error
+			,lock
+			,settemp
+			,waterouttempflag
+			,settemp_hotwater
+			,roomtemp
+			,pipein_temp
+			,pipeout_temp
+			,tank_temp
+			,sun_temp
+			,hotwater
+			,droomtempflag
+			,droomtempflag_2
+			,controlType
+			,lownoisemode_oper
+			,quickDHWheat_oper
+			,pipe_inlet_temp
+			,pipe_outlet_temp
+			,heat_water_temp
+			,flow_rate
+			,air_temp_mix_circuit
+			,water_temp_mix_circuit
+			,DHW_oper_thermostat
+			,heat_oper_thermostat
+			,cool_oper_thermostat
+			,control_air_water
+			,threeway_DHW
+			,conn_thermostat
+			,heavy_trouble
+			,avail_emer_oper_DHW
+			,avail_emer_oper_heating
+			,forced_defrost
+			,slight_trouble
+			,critical_trouble
+			,conn_3rd_party
+			,smartgrid2
+			,smartgrid1
+			,flow_switch
+			,screed_drying_oper
+			,external_digital
+			,int_water_pump_oper
+			,ext_water_pump_oper
+			,solar_water_pump_oper
+			,solar_3way_valve_direction
+			,twoway_valve_direction
+			,backup_heater_A
+			,backup_heater_B
+			,DHW_boost_heater
+			,ext_boiler_oper
+			,mix_valve_open
+			,mix_valve_close
+			,mixed_water_pump_oper
+			,water_pump_capa
+			,indoor_unit_capa
+		) VALUES (
+			#{id_site}
+			,#{id_gw}
+			,#{id_odu}
+			,#{id_idu}
+			,#{gw_time}
+			,#{server_time}
+			,#{type}
+			,#{mode}
+			,#{oper}
+			,#{error}
+			,#{lock}
+			,#{settemp}
+			,#{waterouttempflag}
+			,#{settemp_hotwater}
+			,#{roomtemp}
+			,#{pipein_temp}
+			,#{pipeout_temp}
+			,#{tank_temp}
+			,#{sun_temp}
+			,#{hotwater}
+			,#{droomtempflag}
+			,#{droomtempflag_2}
+			,#{controlType}
+			,#{lownoisemode_oper}
+			,#{quickDHWheat_oper}
+			,#{pipe_inlet_temp}
+			,#{pipe_outlet_temp}
+			,#{heat_water_temp}
+			,#{flow_rate}
+			,#{air_temp_mix_circuit}
+			,#{water_temp_mix_circuit}
+			,#{DHW_oper_thermostat}
+			,#{heat_oper_thermostat}
+			,#{cool_oper_thermostat}
+			,#{control_air_water}
+			,#{threeway_DHW}
+			,#{conn_thermostat}
+			,#{heavy_trouble}
+			,#{avail_emer_oper_DHW}
+			,#{avail_emer_oper_heating}
+			,#{forced_defrost}
+			,#{slight_trouble}
+			,#{critical_trouble}
+			,#{conn_3rd_party}
+			,#{smartgrid2}
+			,#{smartgrid1}
+			,#{flow_switch}
+			,#{screed_drying_oper}
+			,#{external_digital}
+			,#{int_water_pump_oper}
+			,#{ext_water_pump_oper}
+			,#{solar_water_pump_oper}
+			,#{solar_3way_valve_direction}
+			,#{twoway_valve_direction}
+			,#{backup_heater_A}
+			,#{backup_heater_B}
+			,#{DHW_boost_heater}
+			,#{ext_boiler_oper}
+			,#{mix_valve_open}
+			,#{mix_valve_close}
+			,#{mixed_water_pump_oper}
+			,#{water_pump_capa}
+			,#{indoor_unit_capa}
+		)
+	</insert>
+	
+	<select id="selectSingleCycleAvg" resultMap="singleCycleAvgMap">
+		<![CDATA[
+			SELECT 
+				id_site
+				,id_gw 
+				,id_odu 
+				,id_idu 
+				,MAX(server_time) as last_date
+				,MAX(oper) as oper
+				,sum(settemp) as total_settemp
+				,count(*) as count_settemp
+				,sum(settemp) / count(*) as avg_settemp
+				,sum(roomtemp) as total_roomtemp
+				,count(*) as count_roomtemp
+				,sum(roomtemp) / count(*) as avg_roomtemp
+				,sum(pipein_temp) as total_pipein_temp
+				,count(*) as count_pipein_temp
+				,sum(pipein_temp) / count(*) as avg_pipein_temp
+				,sum(pipeout_temp) as total_pipeout_temp
+				,count(*) as count_pipeout_temp
+				,sum(pipeout_temp) / count(*) as avg_pipeout_temp
+				,sum(indoor_unit_capa) as total_total_capa
+				,count(*) as count_total_capa
+				,sum(indoor_unit_capa) / count(*) as avg_total_capa
+				,sum(water_pump_capa) as total_fan
+				,count(*) as count_fan
+				,sum(water_pump_capa) / count(*) as avg_fan
+				,sum(settemp_hotwater) as total_lev
+				,count(*) as count_lev
+				,sum(settemp_hotwater) / count(*) as avg_lev
+			FROM Awhp_Single_Cycle_Origin_Info
+			WITH(nolock)
+			GROUP BY id_site
+				,id_gw
+				,id_odu
+				,id_idu
+				,DATEPART(year, server_time)
+				,DATEPART(month, server_time)
+				,DATEPART(day, server_time)
+				,DATEPART(hour, server_time)
+				,DATEPART(mi, server_time)/10
+			ORDER BY id_site
+			OFFSET #{_skiprows} ROWS
+			FETCH NEXT #{_pagesize} ROWS ONLY
+		]]>
+	</select>
+	
+	<insert id="saveSingleCycleAvgInfo">
+		INSERT INTO Awhp_Single_Cycle_Avg_Info (
+			id_site
+			,id_gw
+			,id_odu
+			,id_idu
+			,last_time
+			,oper
+			,total_settemp
+			,count_settemp
+			,avg_settemp
+			,total_roomtemp
+			,count_roomtemp
+			,avg_roomtemp
+			,total_pipein_temp
+			,count_pipein_temp
+			,avg_pipein_temp
+			,total_pipeout_temp
+			,count_pipeout_temp
+			,avg_pipeout_temp
+			,total_capa
+			,count_capa
+			,avg_capa
+			,total_fan
+			,count_fan
+			,avg_fan
+			,total_lev
+			,count_lev
+			,avg_lev
+		) VALUES (
+			#{id_site}
+			,#{id_gw}
+			,#{id_odu}
+			,#{id_idu}
+			,#{last_date}
+			,#{oper}
+			,#{total_settemp}
+			,#{count_settemp}
+			,#{avg_settemp}
+			,#{total_roomtemp}
+			,#{count_roomtemp}
+			,#{avg_roomtemp}
+			,#{total_pipein_temp}
+			,#{count_pipein_temp}
+			,#{avg_pipein_temp}
+			,#{total_pipeout_temp}
+			,#{count_pipeout_temp}
+			,#{avg_pipeout_temp}
+			,#{total_capa}
+			,#{count_capa}
+			,#{avg_capa}
+			,#{total_fan}
+			,#{count_fan}
+			,#{avg_fan}
+			,#{total_lev}
+			,#{count_lev}
+			,#{avg_lev}
+		)
+	</insert>
+
+</mapper>
